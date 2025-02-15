@@ -12,7 +12,7 @@ const helmet = require("helmet")
 
 //  routers
 
-// number + fullname + email
+
 // middleware imports
 
 
