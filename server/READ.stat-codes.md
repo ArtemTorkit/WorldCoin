@@ -61,3 +61,13 @@ Code  Constant                              Reason Phrase
 505   HTTP_VERSION_NOT_SUPPORTED            HTTP Version Not Supported  
 507   INSUFFICIENT_STORAGE                  Insufficient Storage  
 511   NETWORK_AUTHENTICATION_REQUIRED       Network Authentication Required  
+
+
+
+
+
+
+
+
+express-async-errors - 
+catches errors in every single async function that uses await
