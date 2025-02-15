@@ -1,1 +1,27 @@
 @import "tailwindcss";
+
+body {
+  font-family: "DM Sans", serif;
+  color: #2d2c2d;
+}
+button {
+  background: #2d2c2d;
+  color: white;
+  padding: 7px 15px;
+  border-radius: 30px;
+  font-weight: medium;
+  transition: all ease 0.3s;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #464646;
+}
+
+.arrow-down {
+  transition: all ease 0.3s;
+  cursor: pointer;
+}
+.arrow-down:hover {
+  background-color: #464646;
+}
