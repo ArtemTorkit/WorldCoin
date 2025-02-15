@@ -6,8 +6,8 @@ import Main from "./components/Main";
 function App() {
   return (
     <>
+      <Header />
       <div className="px-[15px]">
-        <Header />
         <Main />
         <Instruction />
       </div>
