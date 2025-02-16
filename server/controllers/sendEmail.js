@@ -1,6 +1,7 @@
 // SendGrid API
 const sgMail = require('@sendgrid/mail');
-const {StatusCodes} = require("http-status-codes")
+const { StatusCodes } = require("http-status-codes")
+
 const sendEmail = async(req, res) =>  {
     sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
@@ -53,4 +54,5 @@ const sendEmail = async(req, res) =>  {
 });
 };
 
+module.exports = { sendEmail }; 
 
