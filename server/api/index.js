@@ -6,30 +6,27 @@ const connectDB = require("./db/connect");
 const app = express();
 const port = 8000;
 
-// CORS configuration
-const allowCors = (fn) => async (req, res) => {
-  res.setHeader("Access-Control-Allow-Credentials", true);
-  res.setHeader(
-    "Access-Control-Allow-Origin",
-    "*"
-  );
-  res.setHeader(
-    "Access-Control-Allow-Methods",
-    "GET,OPTIONS,PATCH,DELETE,POST,PUT"
-  );
-  res.setHeader(
-    "Access-Control-Allow-Headers",
-    "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version"
-  );
+// Enable CORS for all routes and allow credentials
+app.use(
+  cors({
+    origin: "https://referal-world-app.netlify.app", // Replace this with your frontend URL for production
+    methods: "GET,POST,OPTIONS",
+    allowedHeaders: "Content-Type,Authorization,X-Requested-With",
+    credentials: true,
+  })
+);
 
-  // Handle preflight OPTIONS requests
-  if (req.method === "OPTIONS") {
-    res.status(200).end();
-    return;
-  }
+// Other middleware
+app.use(express.json());
 
-  return await fn(req, res); // Call the original handler
-};
+// Email setup
+const transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: process.env.EMAIL,
+    pass: process.env.EMAIL_PASS,
+  },
+});
 
 // Your email handler
 const sendEmail = async (req, res) => {
@@ -86,7 +83,7 @@ const sendEmail = async (req, res) => {
   }
 };
 
-// Apply CORS and then your handler
-app.post("/send-email", allowCors(sendEmail));
+// POST /send-email route
+app.post("/send-email", sendEmail);
 
 app.listen(port, () => console.log(`Server is listening on port ${port}...`));
