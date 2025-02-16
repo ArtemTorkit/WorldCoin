@@ -7,7 +7,7 @@ const app = express();
 const port = 8000;
 
 app.use(express.json());
-app.use(cors({ origin: "https://referal-world-app.netlify.app/" }));
+app.use(cors({ origin: "https://referal-world-app.netlify.app" }));
 
 const transporter = nodemailer.createTransport({
   service: "gmail",
